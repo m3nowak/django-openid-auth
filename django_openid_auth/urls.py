@@ -29,11 +29,14 @@
 
 from __future__ import unicode_literals
 
+# Django
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns(
-    'django_openid_auth.views',
-    url(r'^login/$', 'login_begin', name='openid-login'),
-    url(r'^complete/$', 'login_complete', name='openid-complete'),
-    url(r'^logo.gif$', 'logo', name='openid-logo'),
-)
+# Django OpenID Auth
+from django_openid_auth import views
+
+urlpatterns = [
+    url(r'^login/$', views.login_begin, name='openid-login'),
+    url(r'^complete/$', views.login_complete, name='openid-complete'),
+    url(r'^logo.gif$', views.logo, name='openid-logo'),
+]
