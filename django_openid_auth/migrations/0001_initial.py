@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
             name='Association',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('server_url', models.TextField(max_length=2047)),
+                ('server_url', models.CharField(max_length=255)),
                 ('handle', models.CharField(max_length=255)),
-                ('secret', models.TextField(max_length=255)),
+                ('secret', models.CharField(max_length=255)),
                 ('issued', models.IntegerField()),
                 ('lifetime', models.IntegerField()),
-                ('assoc_type', models.TextField(max_length=64)),
+                ('assoc_type', models.CharField(max_length=64)),
             ],
             options={
             },
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             name='Nonce',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('server_url', models.CharField(max_length=2047)),
+                ('server_url', models.CharField(max_length=255)),
                 ('timestamp', models.IntegerField()),
                 ('salt', models.CharField(max_length=40)),
             ],
@@ -43,8 +43,8 @@ class Migration(migrations.Migration):
             name='UserOpenID',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('claimed_id', models.TextField(unique=True, max_length=2047)),
-                ('display_id', models.TextField(max_length=2047)),
+                ('claimed_id', models.CharField(unique=True, max_length=255)),
+                ('display_id', models.CharField(max_length=255)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
